@@ -1,18 +1,16 @@
 -- Problem 7
 CREATE TABLE People (
-	Id INT IDENTITY(1, 1),
+	Id INT PRIMARY KEY IDENTITY(1, 1),
 	[Name] NVARCHAR(200) NOT NULL,
-	Picture VARBINARY(MAX) NULL,
-	HeightM DECIMAL(3, 2) NULL,
-	WeightKg DECIMAL(5, 2) NULL,
-	Gender CHAR(1) NOT NULL,
+	Picture VARBINARY(MAX),
+	HeightM DECIMAL(3, 2),
+	WeightKg DECIMAL(5, 2),
+	Gender CHAR(1) NOT NULL CONSTRAINT Gender CHECK(Gender = 'm' OR Gender = 'f'),
 	Birthdate DATE NOT NULL,
-	Biography NVARCHAR(MAX) NULL,
-	PRIMARY KEY(Id),
-	CONSTRAINT Gender CHECK(Gender = 'm' OR Gender = 'f')
+	Biography NVARCHAR(MAX)
 );
 
-INSERT INTO People 
+INSERT INTO People([Name], Picture, HeightM, WeightKg, Gender, Birthdate, Biography)
 	VALUES
 		('Stefan Toshev', NULL, 1.76, 71, 'm', '02/02/1994', 'A fan of Levski Sofia'),
 		('Ivan Minev', NULL, 1.91, 80, 'm', '10/12/1992', 'Worked as a waiter in SASA'),
