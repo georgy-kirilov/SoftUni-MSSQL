@@ -2,10 +2,12 @@
 CREATE TABLE People (
 	Id INT PRIMARY KEY IDENTITY,
 	[Name] NVARCHAR(200) NOT NULL,
-	Picture VARBINARY(MAX),
+	Picture VARBINARY(MAX) 
+	CHECK(DATALENGTH(Picture) <= 2 * 1024 * 1024),
 	HeightM DECIMAL(3, 2),
 	WeightKg DECIMAL(5, 2),
-	Gender CHAR(1) NOT NULL CONSTRAINT Gender CHECK(Gender = 'm' OR Gender = 'f'),
+	Gender CHAR(1) NOT NULL 
+	CHECK(Gender = 'm' OR Gender = 'f'),
 	Birthdate DATE NOT NULL,
 	Biography NVARCHAR(MAX)
 );
