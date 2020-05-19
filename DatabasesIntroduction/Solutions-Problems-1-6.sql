@@ -34,4 +34,5 @@ INSERT INTO Minions(Id, [Name], Age, TownId)
 TRUNCATE TABLE Minions;
 
 -- Problem 6
-DROP TABLE Minions, Towns;
+DROP TABLE Minions;
+DROP TABLE Towns;
