@@ -3,7 +3,13 @@ CREATE VIEW V_EmployeesSalaries AS
 SELECT FirstName, LastName, Salary
 	FROM Employees;
 
--- Problem 17 => TODO
+-- Problem 17
+CREATE VIEW V_EmployeeNameJobTitle AS
+SELECT 
+	CONCAT(FirstName, ' ', ISNULL(MiddleName, ''), ' ', LastName)
+	AS [Full Name],
+	JobTitle
+	FROM Employees;
 
 -- Problem 18
 SELECT DISTINCT JobTitle
