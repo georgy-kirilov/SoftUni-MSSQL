@@ -1,38 +1,43 @@
 -- Problem 1
-CREATE DATABASE Minions; 
+
+use [master];
+
+create database [Minions]; 
+
+use [Minions];
 
 -- Problem 2
-CREATE TABLE Minions (
-	Id INT PRIMARY KEY,
-	[Name] VARCHAR(30) NOT NULL,
-	Age INT
+create table Minions (
+	Id int primary key,
+	[Name] varchar(30) not null,
+	Age int
 );
 
-CREATE TABLE Towns (
-	Id INT PRIMARY KEY,
-	[Name] VARCHAR(30) NOT NULL,
+create table Towns (
+	Id int primary key,
+	[Name] varchar(30) not null
 );
 
 -- Problem 3
-ALTER TABLE Minions
-ADD TownId INT FOREIGN KEY(TownId) REFERENCES Towns(Id);
+alter table Minions
+	add TownId int foreign key(TownId) references Towns(Id);
 
 -- Problem 4
-INSERT INTO Towns(Id, [Name])
-	VALUES
+insert into Towns(Id, [Name])
+	values
 		(1, 'Sofia'),
 		(2, 'Plovdiv'),
 		(3, 'Varna');
 
-INSERT INTO Minions(Id, [Name], Age, TownId)
-	VALUES
+insert into Minions(Id, [Name], Age, TownId)
+	values
 		(1, 'Kevin', 22, 1),
 		(2, 'Bob', 15, 3),
-		(3, 'Steward', NULL, 2);
+		(3, 'Steward', null, 2);
 
 -- Problem 5
-TRUNCATE TABLE Minions;
+truncate table Minions;
 
 -- Problem 6
-DROP TABLE Minions;
-DROP TABLE Towns;
+drop table Minions;
+drop table Towns;

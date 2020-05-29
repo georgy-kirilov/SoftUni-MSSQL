@@ -1,39 +1,39 @@
 -- Problem 16
-CREATE VIEW V_EmployeesSalaries AS
-SELECT FirstName, LastName, Salary
-	FROM Employees;
+create view V_EmployeesSalaries as
+select FirstName, LastName, Salary
+	from Employees;
 
 -- Problem 17
-CREATE VIEW V_EmployeeNameJobTitle AS
-SELECT 
-	CONCAT(FirstName, ' ', ISNULL(MiddleName, ''), ' ', LastName)
-	AS [Full Name],
+create view V_EmployeeNameJobTitle as
+select 
+	concat(FirstName, ' ', isnull(MiddleName, ''), ' ', LastName)
+	as [Full Name],
 	JobTitle
-	FROM Employees;
+	from Employees;
 
 -- Problem 18
-SELECT DISTINCT JobTitle
-	FROM Employees;
+select distinct JobTitle
+	from Employees;
 
 -- Problem 19
-SELECT TOP(10) *
-	FROM Projects
-	ORDER BY
+select top(10) *
+	from Projects
+	order by
 		StartDate,
 		[Name];
 
 -- Problem 20
-SELECT TOP(7) 
+select top(7) 
 	FirstName, LastName, HireDate
-	FROM Employees
-	ORDER BY HireDate DESC;
+	from Employees
+	order by HireDate desc;
 
 -- Problem 21
-UPDATE Employees
-	SET Salary = Salary * 1.12
-	WHERE DepartmentID IN (1, 2, 4, 11);
+update Employees
+	set Salary = Salary * 1.12
+	where DepartmentID in (1, 2, 4, 11);
 
-SELECT Salary FROM Employees;
+select Salary from Employees;
 
 
 	

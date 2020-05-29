@@ -1,69 +1,69 @@
 -- Problem 2
-SELECT * FROM Departments;
+select * from Departments;
 
 -- Problem 3
-SELECT [Name] FROM Departments;
+select [Name] from Departments;
 
 -- Problem 4
-SELECT FirstName, LastName, Salary
-	FROM Employees;
+select FirstName, LastName, Salary
+	from Employees;
 
 -- Problem 5
-SELECT FirstName, MiddleName, LastName
-	FROM Employees;
+select FirstName, MiddleName, LastName
+	from Employees;
 
 -- Problem 6
-SELECT (FirstName + '.' + LastName + '@softuni.bg') 
-	AS [Full Email Address]
-	FROM Employees;
+select (FirstName + '.' + LastName + '@softuni.bg') 
+	as [Full Email Address]
+	from Employees;
 
 -- Problem 7
-SELECT DISTINCT Salary
-	FROM Employees;
+select distinct Salary
+	from Employees;
 
 -- Problem 8
-SELECT * 
-	FROM Employees
-	WHERE JobTitle = 'Sales Representative';
+select * 
+	from Employees
+	where JobTitle = 'Sales Representative';
 
 -- Problem 9
-SELECT FirstName, LastName, JobTitle
-	FROM Employees
-	WHERE Salary BETWEEN 20000 AND 30000;
+select FirstName, LastName, JobTitle
+	from Employees
+	where Salary between 20000 and 30000;
 
 -- Problem 10
-SELECT (FirstName + ' ' + MiddleName + ' ' + LastName) 
-	AS [Full Name]
-	FROM Employees
-	WHERE Salary IN (25000, 14000, 12500, 23600);
+select (FirstName + ' ' + MiddleName + ' ' + LastName) 
+	as [Full Name]
+	from Employees
+	where Salary in (25000, 14000, 12500, 23600);
 
 -- Problem 11
-SELECT FirstName, LastName
-	FROM Employees
-	WHERE ManagerID IS NULL;
+select FirstName, LastName
+	from Employees
+	where ManagerID is null;
 
 -- Problem 12
-SELECT FirstName, LastName, Salary
-	FROM Employees
-	WHERE Salary > 50000
-	ORDER BY Salary DESC;
+select FirstName, LastName, Salary
+	from Employees
+	where Salary > 50000
+	order by Salary desc;
 
 -- Problem 13
-SELECT TOP(5) FirstName, LastName
-	FROM Employees
-	ORDER BY Salary DESC;
+select top(5) FirstName, LastName
+	from Employees
+	order by Salary desc;
 
 -- Problem 14
-SELECT FirstName, LastName
-	FROM Employees
-	WHERE DepartmentID != 4;
+select FirstName, LastName
+	from Employees
+	where DepartmentID != 4;
 
 -- Problem 15
-SELECT * 
-	FROM Employees
-	ORDER BY 
-		Salary DESC,
+select * 
+	from Employees
+	order by 
+		Salary desc,
 		FirstName,
-		LastName DESC,
+		LastName desc,
 		MiddleName;
 

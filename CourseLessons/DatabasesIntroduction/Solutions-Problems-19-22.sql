@@ -1,37 +1,38 @@
 -- Problem 19
-SELECT * FROM Towns; 
-SELECT * FROM Departments;
-SELECT * FROM Employees;
+select * from Towns; 
+select * from Departments;
+select * from Employees;
 
 -- Problem 20
-SELECT * 
-FROM Towns
-ORDER BY [Name];
+select * 
+	from Towns
+	order by [Name];
 
-SELECT *
-FROM Departments
-ORDER BY [Name];
+select *
+	from Departments
+	order by [Name];
 
-SELECT *
-FROM Employees
-ORDER BY Salary DESC;
+select *
+	from Employees
+	order by Salary desc;
 
 -- Problem 21
-SELECT [Name] 
-FROM Towns
-ORDER BY [Name];
+select [Name] 
+	from Towns
+	order by [Name];
 
-SELECT [Name]
-FROM Departments
-ORDER BY [Name];
+select [Name]
+	from Departments
+	order by [Name];
 
-SELECT FirstName, LastName, JobTitle, Salary
-FROM Employees
-ORDER BY Salary DESC;
+select 
+	FirstName, LastName, JobTitle, Salary
+	from Employees
+	order by Salary desc;
 
 -- Problem 22
-UPDATE Employees
-SET Salary = Salary * 1.1;
+update Employees
+	set Salary = Salary * 1.1;
 
-SELECT Salary
-FROM Employees;
+select Salary
+	from Employees;

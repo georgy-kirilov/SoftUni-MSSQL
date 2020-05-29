@@ -1,53 +1,58 @@
 -- Problem 16
-CREATE DATABASE SoftUni;
 
-CREATE TABLE Towns (
-	Id INT PRIMARY KEY IDENTITY,
-	[Name] NVARCHAR(50) NOT NULL
+use [master];
+
+create database [SoftUni];
+
+use [SoftUni];
+
+create table Towns (
+	Id int primary key identity,
+	[Name] nvarchar(50) not null
 );
 
-CREATE TABLE Addresses (
-	Id INT PRIMARY KEY IDENTITY,
-	AddressText NVARCHAR(200) NOT NULL,
-	TownId INT FOREIGN KEY REFERENCES Towns(Id) NOT NULL
+create table Addresses (
+	Id int primary key identity,
+	AddressText nvarchar(200) not null,
+	TownId int foreign key references Towns(Id) not null
 );
 
-CREATE TABLE Departments (
-	Id INT PRIMARY KEY IDENTITY,
-	[Name] NVARCHAR(100) NOT NULL UNIQUE
+create table Departments (
+	Id int primary key identity,
+	[Name] nvarchar(100) not null unique
 );
 
-CREATE TABLE Employees (
-	Id INT PRIMARY KEY IDENTITY,
-	FirstName NVARCHAR(50) NOT NULL,
-	MiddleName NVARCHAR(50),
-	LastName NVARCHAR(50) NOT NULL,
-	JobTitle NVARCHAR(50) NOT NULL,
-	DepartmentId INT FOREIGN KEY REFERENCES Departments(Id) NOT NULL,
-	HireDate DATE NOT NULL,
-	Salary DECIMAL(8, 2) CHECK(Salary > 0) NOT NULL,
-	AddressId INT FOREIGN KEY REFERENCES Addresses(Id)
+create table Employees (
+	Id int primary key identity,
+	FirstName nvarchar(50) not null,
+	MiddleName nvarchar(50),
+	LastName nvarchar(50) not null,
+	JobTitle nvarchar(50) not null,
+	DepartmentId int foreign key references Departments(Id) not null,
+	HireDate date not null,
+	Salary decimal(8, 2) check(Salary > 0) not null,
+	AddressId int foreign key references Addresses(Id)
 );
 
 -- Problem 18
-INSERT INTO Towns([Name])
-	VALUES
+
+insert into Towns([Name])
+	values
 		('Sofia'),
 		('Plovdiv'),
 		('Varna'),
 		('Burgas');
 
-INSERT INTO Departments([Name])
-	VALUES
+insert into Departments([Name])
+	values
 		('Engineering'),
 		('Sales'),
 		('Marketing'),
 		('Software Development'),
 		('Quality Assurance');
 
-INSERT INTO Employees
-(FirstName, MiddleName, LastName, JobTitle, DepartmentId, HireDate, Salary)
-	VALUES
+insert into Employees (FirstName, MiddleName, LastName, JobTitle, DepartmentId, HireDate, Salary)
+	values
 		('Ivan', 'Ivanov', 'Ivanov', '.NET Developer', 4, '02/01/2013', 3500.00),
 		('Petar', 'Petrov', 'Petrov', 'Senior Engineer', 1, '03/02/2004', 4000.00),
 		('Maria', 'Petrova', 'Ivanova',	'Intern', 5, '08/28/2016', 525.25),

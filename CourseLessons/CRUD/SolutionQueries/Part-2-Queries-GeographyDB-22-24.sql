@@ -1,21 +1,21 @@
 -- Problem 22
-SELECT PeakName
-	FROM Peaks
-	ORDER BY PeakName;
+select PeakName
+	from Peaks
+	order by PeakName;
 
 -- Problem 23
-SELECT TOP(30) CountryName, [Population]
-	FROM Countries
-	WHERE ContinentCode = 'EU'
-	ORDER BY 
-		[Population] DESC,
+select top(30) CountryName, [Population]
+	from Countries
+	where ContinentCode = 'EU'
+	order by 
+		[Population] desc,
 		CountryName;
 
 -- Problem 24
-SELECT CountryName, CountryCode,
-	CASE
-		WHEN CurrencyCode = 'EUR' THEN 'Euro'
-		ELSE 'Not Euro'
-	END AS Currency
-	FROM Countries
-	ORDER BY CountryName;
+select CountryName, CountryCode,
+	case
+		when CurrencyCode = 'EUR' then 'Euro'
+		else 'Not Euro'
+	end as Currency
+	from Countries
+	order by CountryName;

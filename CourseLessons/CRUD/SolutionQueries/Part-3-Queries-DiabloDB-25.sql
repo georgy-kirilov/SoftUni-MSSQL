@@ -1,3 +1,4 @@
-SELECT [Name]
-	FROM Characters
-	ORDER BY [Name];
+-- Problem 25
+select [Name]
+	from Characters
+	order by [Name];

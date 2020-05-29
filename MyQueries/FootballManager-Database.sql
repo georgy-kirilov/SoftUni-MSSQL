@@ -1,31 +1,29 @@
-USE [master];
+use [master];
 
-CREATE DATABASE FootballManager;
+create database [FootballManager];
 
-USE [FootballManager];
+use [FootballManager];
 
-CREATE TABLE FieldRoles (
-	Id INT PRIMARY KEY IDENTITY,
-	RoleName VARCHAR(15) 
-	CHECK(LEN(RoleName) >= 1) NOT NULL UNIQUE
+create table FieldRoles (
+	Id int primary key identity,
+	RoleName varchar(15) check(len(RoleName) >= 1) not null unique
 );
 
-INSERT INTO FieldRoles (RoleName)
-	VALUES
+insert into FieldRoles (RoleName)
+	values
 		('Goalkeeper'),
 		('Defender'),
 		('Midfielder'),
 		('Forward');
 
-CREATE TABLE Positions (
-	Id INT PRIMARY KEY IDENTITY,
-	PositionName VARCHAR(5) 
-	CHECK(LEN(PositionName) >= 1) NOT NULL UNIQUE,
-	RoleId INT FOREIGN KEY REFERENCES FieldRoles(Id) NOT NULL
+create table Positions (
+	Id int primary key identity,
+	PositionName varchar(5) check(len(PositionName) >= 1) not null unique,
+	RoleId int foreign key references FieldRoles(Id) not null
 );
 
-INSERT INTO Positions (PositionName, RoleId)
-	VALUES
+insert into Positions (PositionName, RoleId)
+	values
 		('GK', 1),
 		('LB', 2),
 		('CB', 2),
@@ -44,14 +42,13 @@ INSERT INTO Positions (PositionName, RoleId)
 		('CF', 4),
 		('ST', 4);
 
-CREATE TABLE Countries (
-	Id INT PRIMARY KEY IDENTITY,
-	CountryName VARCHAR(30) 
-	CHECK(LEN(CountryName) >= 4) NOT NULL UNIQUE
+create table Countries (
+	Id int primary key identity,
+	CountryName varchar(30) check(len(CountryName) >= 4) not null unique
 );
 
-INSERT INTO Countries (CountryName)
-	VALUES
+insert into Countries (CountryName)
+	values
 		('Argentina'),
 		('Brazil'),
 		('Chile'),
@@ -63,15 +60,14 @@ INSERT INTO Countries (CountryName)
 		('Netherlands'),
 		('Egypt');
 
-CREATE TABLE Championships (
-	Id INT PRIMARY KEY IDENTITY,
-	ChampionshipName NVARCHAR(40) 
-	CHECK(LEN(ChampionshipName) >= 1) NOT NULL UNIQUE,
-	CountryId INT FOREIGN KEY REFERENCES Countries(Id)
+create table Championships (
+	Id int primary key identity,
+	ChampionshipName nvarchar(40) check(len(ChampionshipName) >= 1) not null unique,
+	CountryId int foreign key references Countries(Id)
 );
 
-INSERT INTO Championships (ChampionshipName, CountryId)
-	VALUES
+insert into Championships (ChampionshipName, CountryId)
+	values
 		('Bundesliga', 4),
 		('Bundesliga 2', 4),
 		('Serie A', 5),
@@ -83,14 +79,13 @@ INSERT INTO Championships (ChampionshipName, CountryId)
 		('Ligue 2', 8),
 		('Eredivisie', 9);
 
-CREATE TABLE Teams (
-	Id INT PRIMARY KEY IDENTITY,
-	TeamName NVARCHAR(100) 
-	CHECK(LEN(TeamName) >= 3) NOT NULL UNIQUE
+create table Teams (
+	Id int primary key identity,
+	TeamName nvarchar(100) check(len(TeamName) >= 3) not null unique
 );
 
-INSERT INTO Teams (TeamName)
-	VALUES
+insert into Teams (TeamName)
+	values
 		('Bayern Munchen'),
 		('Schalke 04'),
 		('Juventus'),
@@ -101,15 +96,15 @@ INSERT INTO Teams (TeamName)
 		('Real Madrid'),
 		('PSG');
 
-CREATE TABLE TeamsChampionships (
-	Id INT PRIMARY KEY IDENTITY,
-	TeamId INT FOREIGN KEY REFERENCES Teams(Id) NOT NULL,
-	ChampionshipId INT FOREIGN KEY REFERENCES Championships(Id) NOT NULL
+create table TeamsChampionships (
+	Id int primary key identity,
+	TeamId int foreign key references Teams(Id) not null,
+	ChampionshipId int foreign key references Championships(Id) not null
 );
 
 
-INSERT INTO TeamsChampionships (TeamId, ChampionshipId)
-	VALUES
+insert into TeamsChampionships (TeamId, ChampionshipId)
+	values
 		(1, 1),
 		(2, 1),
 		(3, 3),
