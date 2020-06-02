@@ -1,7 +1,8 @@
 use [Diablo];
 
 -- Problem 14
-select top(50) [Name], format([Start], 'yyyy-MM-dd') as [Start] 
+select top(50) 
+	[Name], format([Start], 'yyyy-MM-dd') as [Start] 
 	from Games
 	where year([Start]) in (2011, 2012)
 	order by
@@ -24,23 +25,23 @@ select Username, IpAddress
 	where IpAddress like '___.1%.%.___'
 	order by Username;
 
--- Problem 17 => TODO: doesn't work in JUDGE
+-- Problem 17 
 select 
-	[Name] as [Game],
+	[Name],
 	case
-		when datepart(hour, [Start]) >= 0 and datepart(hour, [Start]) < 12 then 'Morning'
-		when datepart(hour, [Start]) >= 12 and datepart(hour, [Start]) < 18 then 'Afternoon'
-		when datepart(hour, [Start]) >= 18 and datepart(hour, [Start]) < 24 then 'Evening'
+		when datepart(hour, [Start]) between 0 and 11 then 'Morning'
+		when datepart(hour, [Start]) between 12 and 17 then 'Afternoon'
+		else 'Evening'
 	end as [Part of the Day],
 	case
-		when Duration <= 3 then 'Extra short'
-		when Duration >= 4 and Duration <= 6 then 'Short'
+		when Duration <= 3 then 'Extra Short'
+		when Duration between 4 and 6 then 'Short'
 		when Duration > 6 then 'Long'
-		when Duration is null then 'Extra long'
+		else 'Extra Long'
 	end as [Duration]
 	from Games
 	order by
-		Game,
-		Duration,
+		[Name],
+		[Duration],
 		[Part of the Day];
 		
