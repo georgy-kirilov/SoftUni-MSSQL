@@ -54,12 +54,12 @@ select top(5)
 select top(3)
 	e.EmployeeID, e.[FirstName]
 	from Employees as e
-	left outer join EmployeesProjects as ep
+	left join EmployeesProjects as ep
 		on ep.EmployeeID = e.EmployeeID
-	left outer join Projects as pr
+	left join Projects as pr
 		on ep.ProjectID = pr.ProjectID
 	where ep.ProjectID is null
-	order by EmployeeID asc
+	order by EmployeeID asc;
 
 -- Problem 6
 select 
